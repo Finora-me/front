@@ -1,4 +1,4 @@
-import { AuthResponse, LoginCredentials } from "@/types/auth"
+import { AuthResponse, LoginCredentials, RegisterCredentials, RegisterResponse } from "@/types/auth"
 import { User } from "@/types/user"
 
 // Dados mockados do usuário
@@ -28,6 +28,30 @@ export const mockAuthService = {
     }
     
     throw new Error("Email ou senha incorretos")
+  },
+
+  async register(credentials: RegisterCredentials): Promise<RegisterResponse> {
+    await delay(1200)
+    
+    // Simula verificação se email já existe
+    if (credentials.email === mockUser.email) {
+      throw new Error("Email já está em uso")
+    }
+    
+    const newUser: User = {
+      id: "2",
+      name: credentials.name,
+      email: credentials.email,
+      phone: credentials.phone,
+      cpf: credentials.cpf,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }
+    
+    return {
+      user: newUser,
+      token: "mock_jwt_token_register_67890",
+    }
   },
 
   async logout(): Promise<void> {

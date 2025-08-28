@@ -16,3 +16,17 @@ export interface AuthState {
   isLoading: boolean
   error: string | null
 }
+
+export interface RegisterCredentials {
+  name: string
+  email: string
+  phone: string
+  cpf: string
+  password: string
+  confirmPassword: string
+}
+
+export interface RegisterResponse {
+  user: User
+  token: string
+}

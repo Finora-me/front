@@ -1,4 +1,4 @@
-import { LoginCredentials, AuthResponse } from "@/types/auth"
+import { LoginCredentials, AuthResponse, RegisterCredentials, RegisterResponse } from "@/types/auth"
 import { mockAuthService } from "../mock/auth"
 import { User } from "@/types/user"
 
@@ -6,6 +6,9 @@ import { User } from "@/types/user"
 export const authService = {
   login: (credentials: LoginCredentials): Promise<AuthResponse> => 
     mockAuthService.login(credentials),
+    
+  register: (credentials: RegisterCredentials): Promise<RegisterResponse> => 
+    mockAuthService.register(credentials),
     
   logout: (): Promise<void> => 
     mockAuthService.logout(),

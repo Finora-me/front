@@ -1,10 +1,11 @@
 import { create } from 'zustand'
-import { AuthState, LoginCredentials } from '@/types/auth'
+import { AuthState, LoginCredentials, RegisterCredentials } from '@/types/auth'
 import { authService } from '@/services/api/auth'
 import { User } from '@/types/user'
 
 interface AuthActions {
   login: (credentials: LoginCredentials) => Promise<void>
+  register: (credentials: RegisterCredentials) => Promise<void>
   logout: () => Promise<void>
   clearError: () => void
   setUser: (user: User) => void
@@ -43,6 +44,29 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
       })
     }
   },
+  
+register: async (credentials) => {
+  set({ isLoading: true, error: null })
+  
+  try {
+    const response = await authService.register(credentials)
+    
+    set({
+      user: response.user,
+      isAuthenticated: true,
+      isLoading: false,
+    })
+    
+    // Salva o token temporariamente no localStorage
+    localStorage.setItem('finora_token', response.token)
+    
+  } catch (error) {
+    set({
+      error: error instanceof Error ? error.message : 'Erro desconhecido',
+      isLoading: false,
+    })
+  }
+},
 
   logout: async () => {
     set({ isLoading: true })
