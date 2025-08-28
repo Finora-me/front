@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Suas cores customizadas da Finora */
+  --color-finora-primary: #4C4C66;
+  --color-finora-primary-light: #6F6C99;
+  
+  --color-finora-green-100: #A1E655;
+  --color-finora-green-200: #77C852;
+  --color-finora-green-300: #2DB261;
+  --color-finora-green-400: #2C8E41;
+  --color-finora-green-500: #0D8562;
+  --color-finora-green-600: #084335;
+  
+  --color-finora-accent-red: #E3507A;
+  --color-finora-accent-cyan: #00C7BE;
+  
+  --color-finora-background-paper: #FFF8F8;
+  --color-finora-background-green: #E5F4E4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Definindo as cores da Finora para o Tailwind */
+  --color-finora-primary: var(--color-finora-primary);
+  --color-finora-primary-light: var(--color-finora-primary-light);
+  
+  --color-finora-green-100: var(--color-finora-green-100);
+  --color-finora-green-200: var(--color-finora-green-200);
+  --color-finora-green-300: var(--color-finora-green-300);
+  --color-finora-green-400: var(--color-finora-green-400);
+  --color-finora-green-500: var(--color-finora-green-500);
+  --color-finora-green-600: var(--color-finora-green-600);
+  
+  --color-finora-accent-red: var(--color-finora-accent-red);
+  --color-finora-accent-cyan: var(--color-finora-accent-cyan);
+  
+  --color-finora-background-paper: var(--color-finora-background-paper);
+  --color-finora-background-green: var(--color-finora-background-green);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
