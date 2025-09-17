@@ -12,14 +12,12 @@ const mockUser: User = {
   updatedAt: new Date().toISOString(),
 }
 
-// Simula delay de requisição
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export const mockAuthService = {
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
-    await delay(1000) // Simula latência
+    await delay(1000)
     
-    // Validação simples para o mock
     if (credentials.email === mockUser.email && credentials.password === "123456") {
       return {
         user: mockUser,

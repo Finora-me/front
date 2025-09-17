@@ -33,9 +33,9 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
         isLoading: false,
       })
       
-      // Aqui salvaríamos o token no cookie httpOnly
-      // Por enquanto, vamos simular
-      localStorage.setItem('finora_token', response.token)
+      // ANTES: localStorage.setItem('finora_token', response.token)
+      // AGORA: Salvamos o token em um cookie que o servidor pode ler.
+      document.cookie = `finora_token=${response.token}; path=/; max-age=86400;` // max-age=86400 significa que o cookie expira em 1 dia (86400 segundos)
       
     } catch (error) {
       set({
@@ -74,6 +74,7 @@ register: async (credentials) => {
     try {
       await authService.logout()
       localStorage.removeItem('finora_token')
+      document.cookie = 'finora_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;' // Linha para remover o cookie
       
       set({
         user: null,
