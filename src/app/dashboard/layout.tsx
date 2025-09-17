@@ -1,6 +1,6 @@
 // src/app/dashboard/layout.tsx
-import { Header } from '../../components/Header' // Ajuste o caminho se necessário
-import { SideNav } from '../../components/SideNav' // Ajuste o caminho se necessário
+import { Header } from '@/components/Header'
+import { SideNav } from '@/components/SideNav'
 
 export default function DashboardLayout({
   children,
@@ -8,15 +8,19 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
+      {/* A barra lateral fica fixa na tela */}
       <SideNav />
-      <div className="flex flex-1 flex-col">
+
+      {/* A área de conteúdo principal tem uma margem à esquerda 
+          exatamente da largura da barra lateral (w-64 -> ml-64) */}
+      <main className="ml-64">
         <Header />
-        {/* O <main> agora tem o padding e ocupa o espaço restante para o conteúdo rolável */}
-        <main className="flex-1 p-6">
+        {/* O padding agora é aplicado diretamente aqui, no container do conteúdo */}
+        <div className="p-6">
           {children}
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   )
 }

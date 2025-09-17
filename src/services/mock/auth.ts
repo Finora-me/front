@@ -2,7 +2,7 @@ import { AuthResponse, LoginCredentials, RegisterCredentials, RegisterResponse }
 import { User } from "@/types/user"
 
 // Dados mockados do usuário
-const mockUser: User = {
+export const mockUser: User = {
   id: "1",
   name: "Cauê Foyth",
   email: "caue@gmail.com",

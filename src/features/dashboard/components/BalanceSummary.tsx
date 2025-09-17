@@ -42,7 +42,6 @@ function SummaryCard({
 
 
 export function BalanceSummary() {
-  // Calculando os saldos a partir dos dados mockados
   const totalBalance = mockTransactions.reduce((acc, t) => acc + t.amount, 0)
   const totalIncome = mockTransactions
     .filter((t) => t.type === 'income')
@@ -50,8 +49,6 @@ export function BalanceSummary() {
   const totalExpense = mockTransactions
     .filter((t) => t.type === 'expense')
     .reduce((acc, t) => acc + t.amount, 0)
-
-  // Dados mocados para as porcentagens
   const percentageChange = 12.5
 
   return (
