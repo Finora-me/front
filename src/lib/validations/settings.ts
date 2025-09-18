@@ -25,8 +25,8 @@ export type ChangePasswordFormData = z.infer<typeof changePasswordSchema>
 
 export const categorySchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
-  type: z.enum(["income", "expense"], {
-    errorMap: () => ({ message: "Selecione um tipo" }),
+  type: z.enum(["income", "expense"]).refine((val) => !!val, {
+    message: "Selecione um tipo",
   }),
   color: z.string().min(1, "Selecione uma cor"),
 })

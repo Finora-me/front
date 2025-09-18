@@ -40,7 +40,7 @@ export function UserSettingsForm() {
     resolver: zodResolver(changePasswordSchema),
   })
 
-  const onProfileSubmit = (data: UserProfileFormData & ChangePasswordFormData) => {
+  const onProfileSubmit = (data: UserProfileFormData) => {
     console.log("Formulário submetido:", data)
     alert("Dados salvos com sucesso! (mock)")
   }
